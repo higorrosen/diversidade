@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Último Axioma</title>
+    <style>
+        :root {
+            --bg-color: #f4f4f9;
+            --text-color: #333;
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --card-bg: #ffffff;
+            --correct-color: #27ae60;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 { margin: 0; font-size: 2.5rem; letter-spacing: 2px; }
+
+        .container { max-width: 800px; width: 90%; margin-bottom: 4rem; }
+
+        .story-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s forwards;
+        }
+
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+        .hidden { display: none; }
+
+        .question-box {
+            background-color: #eef2f5;
+            border-left: 5px solid var(--primary-color);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        button.option-btn {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        button.option-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .comparison-container {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .comparison-col {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .comparison-col h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .comparison-item {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .comparison-item strong {
+            display: block;
+            color: #bdc3c7;
+        }
+
+        .feedback-section {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>O AXIOMA</h1>
+        <p>A Razão como Instrumento de Soberania Individual</p>
+    </header>
+
+    <div class="container">
+        <div id="part1" class="story-section">
+            <h2>Capítulo I: A Estrutura do Universo</h2>
+            <p>Onde outros viam o caos, aquele cérebro brilhante enxergava estruturas formais. A missão era monumental: axiomatizar a mecânica clássica. Transformar as leis do movimento em uma linguagem lógica inquebrável, imune a corrupções subjetivas e validações políticas.</p>
+            
+            <div class="question-box" id="qbox1">
+                <h3>Interrupção Investigativa 1</h3>
+                <p>Nossa mente costuma associar a "genialidade em exatas" a certos perfis. Com base na sua imagem mental neste momento, este personagem é:</p>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="answerQuestion(1, 'Homem')">Homem</button>
+                    <button class="option-btn" onclick="answerQuestion(1, 'Mulher')">Mulher</button>
+                    <button class="option-btn" onclick="answerQuestion(1, 'Não-binário')">Não-binário</button>
+                    <button class="option-btn" onclick="answerQuestion(1, 'Não especificado')">Não formei uma imagem</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="part2" class="story-section hidden">
+            <h2>Capítulo II: As Raízes da Mente</h2>
+            <p>O rigor intelectual exigido para essa tarefa o colocou no centro das maiores universidades. A lógica é uma ferramenta universal, mas o caminho até as cátedras acadêmicas de elite no meio do século XX era pavimentado por heranças históricas profundas e, muitas vezes, excludentes.</p>
+
+            <div class="question-box" id="qbox2">
+                <h3>Interrupção Investigativa 2</h3>
+                <p>De qual região do globo você imagina que a família e os antepassados deste cientista se originam?</p>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="answerQuestion(2, 'Europa Ocidental')">Europa Ocidental</button>
+                    <button class="option-btn" onclick="answerQuestion(2, 'África Subsaariana')">África Subsaariana</button>
+                    <button class="option-btn" onclick="answerQuestion(2, 'América Latina/Caribe')">América Latina / Caribe</button>
+                    <button class="option-btn" onclick="answerQuestion(2, 'Leste Asiático')">Leste Asiático</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="part3" class="story-section hidden">
+            <h2>Capítulo III: O Retrato na Parede</h2>
+            <p>O trabalho prosperou. As publicações começaram a moldar os fundamentos da física moderna. No entanto, o sucesso científico o obrigou a frequentar congressos e simpósios onde a sua presença física passou a ser notada tanto quanto as suas equações.</p>
+
+            <div class="question-box" id="qbox3">
+                <h3>Interrupção Investigativa 3</h3>
+                <p>Se você visse uma fotografia histórica desta pessoa escrevendo a axiomatização no quadro negro, qual fenótipo (aparência física) você esperaria ver?</p>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="answerQuestion(3, 'Pele clara e traços finos')">Pele clara e traços finos</button>
+                    <button class="option-btn" onclick="answerQuestion(3, 'Pele retinta e cabelos crespos')">Pele retinta e cabelos crespos</button>
+                    <button class="option-btn" onclick="answerQuestion(3, 'Pele parda e traços indígenas')">Pele parda e traços indígenas</button>
+                    <button class="option-btn" onclick="answerQuestion(3, 'Pele clara e traços orientais')">Pele clara e traços orientais</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="part4" class="story-section hidden">
+            <h2>Capítulo IV: O Acesso à Torre de Marfim</h2>
+            <p>A matemática provou-se o espaço de liberdade absoluta do indivíduo. Porém, o acesso a esse espaço de pesquisa exigiu passar por filtros sociais. O mundo acadêmico cobrava pedágios que não tinham a ver com o intelecto.</p>
+
+            <div class="question-box" id="qbox4">
+                <h3>Interrupção Investigativa 4</h3>
+                <p>Como você imagina que foi a trajetória social dessa pessoa até a elite da pesquisa?</p>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="answerQuestion(4, 'Acesso facilitado por privilégio branco')">Acesso natural por ser de uma família branca de classe média/alta</button>
+                    <button class="option-btn" onclick="answerQuestion(4, 'Superação de segregação racial')">Superou as leis de segregação racial contra negros da época</button>
+                    <button class="option-btn" onclick="answerQuestion(4, 'Bolsa para imigrantes')">Dependeu de auxílios estatais para imigrantes do sul global</button>
+                    <button class="option-btn" onclick="answerQuestion(4, 'Missão religiosa')">Educação inicial financiada por missões religiosas em territórios colonizados</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="part5" class="story-section hidden">
+            <h2>Capítulo V: O Julgamento Irracional</h2>
+            <p>A tensão culminou no ápice da Guerra Fria. O rigor de sua pesquisa era incontestável, mas o Estado não tolerava o que fugia ao seu padrão de conformidade. De repente, o FBI revogou sumariamente sua credencial de segurança, classificando essa mente brilhante como uma ameaça à nação.</p>
+
+            <div class="question-box" id="qbox5">
+                <h3>Interrupção Investigativa 5</h3>
+                <p>Ignorando a universalidade do seu trabalho lógico, por qual "desvio" o Estado o considerou um risco à segurança nacional?</p>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="answerQuestion(5, 'Espionagem Soviética')">Suspeita de Espionagem Soviética</button>
+                    <button class="option-btn" onclick="answerQuestion(5, 'Homossexualidade')">Homossexualidade</button>
+                    <button class="option-btn" onclick="answerQuestion(5, 'Ativismo Racial')">Ativismo Racial (Direitos Civis)</button>
+                    <button class="option-btn" onclick="answerQuestion(5, 'Fraude Científica')">Fraude Científica</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="feedback" class="story-section feedback-section hidden">
+            <h2>A Realidade dos Fatos</h2>
+            <p>Você acaba de percorrer fragmentos da vida de <strong>J.C.C. McKinsey</strong>, peça-chave na fundamentação lógica da mecânica.</p>
+            
+            <div class="comparison-container">
+                <div class="comparison-col">
+                    <h3>Suas Suposições</h3>
+                    <div class="comparison-item"><strong>Gênero:</strong> <span id="user-1"></span></div>
+                    <div class="comparison-item"><strong>Ancestralidade:</strong> <span id="user-2"></span></div>
+                    <div class="comparison-item"><strong>Fenótipo:</strong> <span id="user-3"></span></div>
+                    <div class="comparison-item"><strong>Trajetória/Acesso:</strong> <span id="user-4"></span></div>
+                    <div class="comparison-item"><strong>Motivo do Risco:</strong> <span id="user-5"></span></div>
+                </div>
+
+                <div class="comparison-col" style="border-color: var(--correct-color);">
+                    <h3>Dados Reais (McKinsey)</h3>
+                    <div class="comparison-item"><strong>Gênero:</strong> Homem</div>
+                    <div class="comparison-item"><strong>Ancestralidade:</strong> Europa Ocidental</div>
+                    <div class="comparison-item"><strong>Fenótipo:</strong> Pele clara e traços finos</div>
+                    <div class="comparison-item"><strong>Trajetória/Acesso:</strong> Acesso natural por privilégio racial</div>
+                    <div class="comparison-item"><strong>Motivo do Risco:</strong> Homossexualidade</div>
+                </div>
+            </div>
+
+            <p style="font-size: 0.95rem; opacity: 0.9; text-align: justify; margin-top: 20px;">
+                <strong>O Contraponto Lógico:</strong> O exercício evidencia como costumamos projetar o arquétipo do "homem branco europeu" quando pensamos em genialidade matemática — e McKinsey possuía esse privilégio racial de acesso. No entanto, as instituições estatais de 1953 cassaram sua credencial exclusivamente por sua homossexualidade. Sua obra formal, imune à perseguição e ao irracionalismo do Estado, sobreviveu como prova de que a razão é a verdadeira soberania do indivíduo.
+            </p>
+
+            <button id="submit-btn" class="submit-btn" onclick="enviarDados()">Enviar Dados para o Debate</button>
+        </div>
+    </div>
+
+    <script>
+        const userAnswers = { q1: '', q2: '', q3: '', q4: '', q5: '' };
+
+        function answerQuestion(q, val) {
+            userAnswers['q' + q] = val;
+            document.getElementById('qbox' + q).innerHTML = `<p>Registrado: <strong>${val}</strong></p>`;
+
+            if (q < 5) {
+                const next = document.getElementById('part' + (q + 1));
+                next.classList.remove('hidden');
+                next.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                showFeedback();
+            }
+        }
+
+        function showFeedback() {
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById('user-' + i).innerText = userAnswers['q' + i];
+            }
+            
+            const fb = document.getElementById('feedback');
+            fb.classList.remove('hidden');
+            fb.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function enviarDados() {
+            const btn = document.getElementById('submit-btn');
+            btn.innerText = "Enviando...";
+            
+            fetch('salvar.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userAnswers)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === 'sucesso') {
+                    btn.innerText = "Dados Registrados! Aguarde o Debate.";
+                    btn.style.backgroundColor = "var(--correct-color)";
+                    btn.disabled = true;
+                } else {
+                    btn.innerText = "Erro ao enviar. Tente novamente.";
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao salvar:', error);
+                btn.innerText = "Erro de conexão.";
+            });
+        }
+    </script>
+</body>
+</html>
